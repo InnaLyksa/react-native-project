@@ -41,8 +41,9 @@ export default function App() {
 // 				>
 // 					<TextInput style={styles.input} placeholder="Username" value={name} onChangeText={handleName} />
 // 					<TextInput style={styles.input} placeholder="Password" value={password} secureTextEntry={true} onChangeText={handlePassword} />
+
+// 					<Button title={"Login"} style={styles.input} onPress={onLogin} />
 // 				</KeyboardAvoidingView>
-// 				<Button title={"Login"} style={styles.input} onPress={onLogin} />
 // 			</View>
 // 		</TouchableWithoutFeedback>
 // 	);
