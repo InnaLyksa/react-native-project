@@ -1,15 +1,26 @@
 // import LoginScreen from "./Screens/LoginScreen";
-// import { useEffect } from "react";
+import { useEffect } from "react";
 // import * as Font from "expo-font";
-// import { useFonts } from "expo-font";
-// import * as SplashScreen from "expo-splash-screen";
-import { setFonts } from "./src/utils/setFonts";
+import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
+
 import RegistrationScreen from "./src/Screens/authScreens/RegistrationScreen";
 
-// import { fonts } from "./src/utils/fonts";
+import { fonts } from "./src/utils/fonts";
 
 export default function App() {
-	setFonts();
+	const [fontsLoaded] = useFonts(fonts);
+	useEffect(() => {
+		async function prepare() {
+			await SplashScreen.preventAutoHideAsync();
+		}
+		prepare();
+	}, []);
+	if (!fontsLoaded) {
+		return undefined;
+	} else {
+		SplashScreen.hideAsync();
+	}
 
 	return (
 		<>
