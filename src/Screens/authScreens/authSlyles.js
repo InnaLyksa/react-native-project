@@ -53,6 +53,16 @@ export const authStyles = StyleSheet.create({
 		marginBottom: 33,
 		marginTop: 92,
 	},
+	titleLogIn: {
+		fontFamily: "Roboto-Medium",
+		fontSize: 30,
+		lineHeight: 35,
+		textAlign: "center",
+		letterSpacing: 0.01,
+		color: "#212121",
+		marginBottom: 33,
+		marginTop: 32,
+	},
 	button: {
 		backgroundColor: "#FF6C00",
 		borderRadius: 100,
