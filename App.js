@@ -1,13 +1,23 @@
 // import LoginScreen from "./Screens/LoginScreen";
-import RegistrationScreen from "./Screens/RegistrationScreen";
+// import { useEffect } from "react";
+// import * as Font from "expo-font";
+// import { useFonts } from "expo-font";
+// import * as SplashScreen from "expo-splash-screen";
+import { setFonts } from "./src/utils/setFonts";
+import RegistrationScreen from "./src/Screens/authScreens/RegistrationScreen";
+
+// import { fonts } from "./src/utils/fonts";
 
 export default function App() {
+	setFonts();
+
 	return (
 		<>
 			<RegistrationScreen />
 			{/* <LoginScreen /> */}
 		</>
 	);
+	// }
 }
 
 // import React, { useState } from "react";
