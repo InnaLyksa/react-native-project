@@ -1,9 +1,10 @@
 import { authStyles } from "../../Screens/authScreens/authSlyles";
+import { StatusBar } from "expo-status-bar";
 const { container, image } = authStyles;
 import { View, ImageBackground, Platform, KeyboardAvoidingView, Keyboard, TouchableWithoutFeedback, Dimensions } from "react-native";
 import { useState, useEffect } from "react";
 const KeyboardWrapper = ({ children }) => {
-	const [dimensions, setDimensions] = useState(Dimensions.get("window").width - 16 * 2);
+	const [dimensions, setDimensions] = useState(Dimensions.get("window").width);
 
 	useEffect(() => {
 		const subscription = Dimensions.addEventListener("change", ({ window }) => {
@@ -13,11 +14,14 @@ const KeyboardWrapper = ({ children }) => {
 	}, []);
 	return (
 		<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-			<ImageBackground source={require("../../images/photo_bg.jpeg")} style={image}>
-				<KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"}>
-					<View style={{ ...container, width: dimensions }}>{children}</View>
+			<View style={{ ...container, width: dimensions }}>
+				<KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS == "ios" ? "padding" : "height"}>
+					<ImageBackground style={image} source={require("../../images/photo_bg.jpeg")}>
+						{children}
+					</ImageBackground>
 				</KeyboardAvoidingView>
-			</ImageBackground>
+				<StatusBar style="auto" />
+			</View>
 		</TouchableWithoutFeedback>
 	);
 };
