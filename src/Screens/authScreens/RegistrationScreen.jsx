@@ -19,7 +19,7 @@ const initialFocus = {
 	password: false,
 };
 
-const RegisterScreen = () => {
+const RegisterScreen = ({ navigation }) => {
 	const [isShowKeyboard, setIsShowKeyboard] = useState(false);
 	const [state, setState] = useState(initialState);
 	const [isFocus, setIsFocus] = useState(initialFocus);
@@ -45,7 +45,9 @@ const RegisterScreen = () => {
 			setState(initialState);
 		}
 	};
-
+	const onTransition = () => {
+		navigation.navigate("Login");
+	};
 	return (
 		<KeyboardWrapper>
 			<View
@@ -111,8 +113,8 @@ const RegisterScreen = () => {
 						</TouchableOpacity>
 						<View style={subscribe}>
 							<Text style={text}>Вже є акаунт? </Text>
-							<Pressable>
-								<Text style={loginLink}>Увійти</Text>
+							<Pressable onPress={onTransition} activeOpacity={0.5}>
+								<Text style={loginLink}> Увійти</Text>
 							</Pressable>
 						</View>
 					</>

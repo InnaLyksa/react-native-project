@@ -16,7 +16,7 @@ const initialFocus = {
 	password: false,
 };
 
-const RegisterScreen = () => {
+const RegisterScreen = ({ navigation }) => {
 	const [isShowKeyboard, setIsShowKeyboard] = useState(false);
 	const [state, setState] = useState(initialState);
 	const [isFocus, setIsFocus] = useState(initialFocus);
@@ -42,7 +42,9 @@ const RegisterScreen = () => {
 			setState(initialState);
 		}
 	};
-
+	const onTransition = () => {
+		navigation.navigate("Registration");
+	};
 	return (
 		<KeyboardWrapper>
 			<View
@@ -57,7 +59,8 @@ const RegisterScreen = () => {
 						value={state.email}
 						onChangeText={value => setState(prevState => ({ ...prevState, email: value.trim() }))}
 						placeholder="Адреса електронної пошти"
-						keyboardType="default"
+						placeholderTextColor="#BDBDBD"
+						keyboardType="email-address"
 						style={{
 							...input,
 							borderColor: isFocus.email ? "#FF6C00" : "#E8E8E8",
@@ -70,6 +73,7 @@ const RegisterScreen = () => {
 							value={state.password}
 							onChangeText={value => setState(prevState => ({ ...prevState, password: value.trim() }))}
 							placeholder="Придумайте пароль"
+							placeholderTextColor="#BDBDBD"
 							style={{
 								...input,
 								borderColor: isFocus.password ? "#FF6C00" : "#E8E8E8",
@@ -90,9 +94,9 @@ const RegisterScreen = () => {
 							<Text style={{ color: "#fff" }}>Зареєструватись</Text>
 						</TouchableOpacity>
 						<View style={subscribe}>
-							<Text style={text}>Ще немає акаунта? </Text>
-							<Pressable>
-								<Text style={loginLink}>Зареєструватись</Text>
+							<Text style={text}>Ще немає акаунта?</Text>
+							<Pressable onPress={onTransition} activeOpacity={0.5}>
+								<Text style={loginLink}> Зареєструватись</Text>
 							</Pressable>
 						</View>
 					</>
